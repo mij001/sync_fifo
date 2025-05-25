@@ -46,10 +46,18 @@ module sync_fifo_tb;
       #50
       @(posedge clk);
       upstr_data = $random;
-      upstr_d_valid = (upstr_data[2] == 1'b1); // Randomize valid signal
     end
-
-    upstr_d_valid = 0;
+  end
+    // Writer logic
+  initial begin
+    // Start after reset
+    #30;
+    forever begin
+      upstr_d_valid = (1'b1); // Randomize valid signal
+      #1500
+      upstr_d_valid = (1'b0); // Randomize valid signal
+      #2000 ;
+    end
   end
 
   // Reader logic
@@ -58,10 +66,10 @@ module sync_fifo_tb;
     #40;
 
     forever begin
-      downstr_d_ready = (1'b0); // Randomize ready signal
+      downstr_d_ready = (1'b0); 
       #1450;
       downstr_d_ready = (1'b1);
-      #150;
+      #1500;
     end
 
     downstr_d_ready = 0;

@@ -62,7 +62,7 @@ module sync_fifo (
         end else begin
             buf_full_next = 1'b0;
         end
-        if (downstr_ptr == upstr_ptr && filled_amt == 0) begin
+        if (filled_amt_next == 0) begin
             buf_empty_next = 1'b1;
         end else begin
             buf_empty_next = 1'b0;
