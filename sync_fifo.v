@@ -12,8 +12,6 @@ module sync_fifo (
     reg [32:0] buffer [1023:0];
     reg [9:0] upstr_ptr;
     reg [9:0] downstr_ptr;
-    reg [32:0] downstr_data_next,
-    reg [32:0] upstr_data_next,
 
     reg [9:0] upstr_ptr_next;
     reg [9:0] downstr_ptr_next;
@@ -30,8 +28,11 @@ module sync_fifo (
     wire read_en;
     wire write_en;
 
-    assign read_en = upstr_d_valid & upstr_d_ready;
-    assign write_en = downstr_d_valid & downstr_d_ready;
+    // reg downstr_d_valid_next;
+    // reg upstr_d_valid_next;
+
+    assign write_en = upstr_d_valid & upstr_d_ready;
+    assign read_en = downstr_d_valid & downstr_d_ready;
     assign upstr_d_ready = ~buf_full;
     assign downstr_d_valid = ~buf_empty;
 
@@ -39,19 +40,12 @@ module sync_fifo (
         /* read-write pointer chage calc */
         if (write_en) begin
             upstr_ptr_next = upstr_ptr + 1;
-            upstr_data_next = upstr_data;
         end else begin
             upstr_ptr_next = upstr_ptr;
         end
 
         if (read_en) begin
-            if (downstr_ptr == 0) begin
-                downstr_ptr_next = downstr_ptr + 1;
-
-                // downstr_ptr_next = 10'0;
-            end else begin
-                downstr_ptr_next = downstr_ptr;
-            end
+            downstr_ptr_next = downstr_ptr + 1;
         end else begin
             downstr_ptr_next = downstr_ptr;
         end
@@ -63,7 +57,7 @@ module sync_fifo (
             filled_amt_next = filled_amt-1;
         end
 
-        if (downstr_ptr == upstr_ptr && filled_amt == 10'd1023) begin
+        if (filled_amt_next == 10'd1023) begin
             buf_full_next = 1'b1;
         end else begin
             buf_full_next = 1'b0;
@@ -88,6 +82,13 @@ module sync_fifo (
             filled_amt <= filled_amt_next;
             buf_full <= buf_full_next;
             buf_empty <= buf_empty_next;
+
+            if (write_en) begin
+                buffer[upstr_ptr] <= upstr_data;
+            end
+            if (read_en) begin
+                downstr_data <= buffer[downstr_ptr];
+            end
         end
         
     end

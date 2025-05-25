@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sync_fifo_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="sync_fifo_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="17,746,065.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="17,746,292.967 ns"></ZoomEndTime>
+      <Cursor1Time time="17,746,255.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="244"></NameColumnWidth>
+      <ValueColumnWidth column_width="141"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject type="logic" fp_name="/sync_fifo_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/nrst">
+      <obj_property name="ElementShortName">nrst</obj_property>
+      <obj_property name="ObjectShortName">nrst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/upstr_data">
+      <obj_property name="ElementShortName">upstr_data[32:0]</obj_property>
+      <obj_property name="ObjectShortName">upstr_data[32:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/upstr_d_valid">
+      <obj_property name="ElementShortName">upstr_d_valid</obj_property>
+      <obj_property name="ObjectShortName">upstr_d_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/upstr_d_ready">
+      <obj_property name="ElementShortName">upstr_d_ready</obj_property>
+      <obj_property name="ObjectShortName">upstr_d_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/sync_fifo_inst/write_en">
+      <obj_property name="ElementShortName">write_en</obj_property>
+      <obj_property name="ObjectShortName">write_en</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/downstr_d_valid">
+      <obj_property name="ElementShortName">downstr_d_valid</obj_property>
+      <obj_property name="ObjectShortName">downstr_d_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/downstr_d_ready">
+      <obj_property name="ElementShortName">downstr_d_ready</obj_property>
+      <obj_property name="ObjectShortName">downstr_d_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sync_fifo_tb/sync_fifo_inst/read_en">
+      <obj_property name="ElementShortName">read_en</obj_property>
+      <obj_property name="ObjectShortName">read_en</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/sync_fifo_inst/buffer">
+      <obj_property name="ElementShortName">buffer[1023:0][32:0]</obj_property>
+      <obj_property name="ObjectShortName">buffer[1023:0][32:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/sync_fifo_inst/upstr_ptr">
+      <obj_property name="ElementShortName">upstr_ptr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">upstr_ptr[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/sync_fifo_inst/downstr_ptr">
+      <obj_property name="ElementShortName">downstr_ptr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">downstr_ptr[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/sync_fifo_inst/filled_amt">
+      <obj_property name="ElementShortName">filled_amt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">filled_amt[9:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sync_fifo_tb/downstr_data">
+      <obj_property name="ElementShortName">downstr_data[32:0]</obj_property>
+      <obj_property name="ObjectShortName">downstr_data[32:0]</obj_property>
+   </wvobject>
+</wave_config>

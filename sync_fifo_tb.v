@@ -1,9 +1,8 @@
+`timescale 1ns / 1ps
 
 module sync_fifo_tb;
 
-  // Parameters
-
-  //Ports
+  // Signals
   reg clk;
   reg nrst;
   reg upstr_d_valid;
@@ -13,7 +12,8 @@ module sync_fifo_tb;
   wire [32:0] downstr_data;
   reg downstr_d_ready;
 
-  sync_fifo  sync_fifo_inst (
+  // Instantiate DUT
+  sync_fifo sync_fifo_inst (
     .clk(clk),
     .nrst(nrst),
     .upstr_d_valid(upstr_d_valid),
@@ -24,6 +24,49 @@ module sync_fifo_tb;
     .downstr_d_ready(downstr_d_ready)
   );
 
-always #5  clk = ! clk ;
+  // Clock generation: 100 MHz
+  initial clk = 0;
+  always #5 clk = ~clk;  // 10 ns period
+
+  // Reset logic
+  initial begin
+    nrst = 0;
+    upstr_d_valid = 0;
+    upstr_data = 0;
+    downstr_d_ready = 0;
+    #20 nrst = 1;  // Deassert reset after 20 ns
+  end
+
+  // Writer logic
+  initial begin
+    // Start after reset
+    #30;
+
+    forever begin
+      #50
+      @(posedge clk);
+      upstr_data = $random;
+      upstr_d_valid = (upstr_data[2] == 1'b1); // Randomize valid signal
+    end
+
+    upstr_d_valid = 0;
+  end
+
+  // Reader logic
+  initial begin
+    // Start slightly delayed
+    #40;
+
+    forever begin
+      downstr_d_ready = (1'b0); // Randomize ready signal
+      #1450;
+      downstr_d_ready = (1'b1);
+      #150;
+    end
+
+    downstr_d_ready = 0;
+  end
+
+  // Simulation time control
 
 endmodule
